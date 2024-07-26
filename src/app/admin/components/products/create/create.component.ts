@@ -31,13 +31,41 @@ export class CreateComponent implements OnInit{
     create_product.feature2 = Feature2.value;
     create_product.categoryId = parseInt(CategoryId.value)
 
+    if(!Name.value){
+      this.alertify.message("Lütfen Ürün Adını Girin !!",
+        {
+          dismissOthers: true,
+        messageType: MessageType.Error,
+        position: Position.TopRight
+        });
+
+        return;
+    }
+    
+    if(parseInt(Quantity.value)<0){
+      this.alertify.message("Lütfen Geçerli Stok Bilgisi Girin !!",
+        {
+          dismissOthers: true,
+        messageType: MessageType.Error,
+        position: Position.TopRight
+        });
+
+        return;
+    }
     this.ProductService.create(create_product, () => {
      // this.hideSpinner(SpinnerType.SquareJellyBox);
-      this.alertify.message("Ürün başariile eklenmistir", {
+      this.alertify.message("Ürün başari ile eklenmistir", {
         dismissOthers: true,
         messageType: MessageType.Success,
         position: Position.TopRight
       });
-    });
+    },errorMessage=>{
+      this.alertify.message(errorMessage,{
+        dismissOthers:true,
+        messageType:MessageType.Error,
+        position:Position.TopRight
+      })
+    }
+  );
   }
 }
