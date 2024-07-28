@@ -15,7 +15,7 @@ import { get } from 'jquery';
 export class ListsComponent implements OnInit{
 
 constructor(private productService:ProductService,private alertifyService:AlertifyService){}
-displayedColumns: string[] = ['id', 'categoryId', 'productCode', 'productName','price','manufactureDate','quantity','feature1','feature2','createdDate','updatedDate'];
+displayedColumns: string[] = ['id', 'categoryId', 'productCode', 'productName','price','manufactureDate','quantity','feature1','feature2','createdDate','updatedDate','edit','delete'];
 dataSource : MatTableDataSource<List_Product> = null;
 
 @ViewChild(MatPaginator) paginator: MatPaginator;
