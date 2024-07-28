@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductService } from '../../../../services/common/models/product.service';
 import { Create_Product } from '../../../../contracts/create_product';
 
@@ -20,6 +20,9 @@ export class CreateComponent implements OnInit{
   ngOnInit(): void {
     
   }
+
+  @Output()createdProduct: EventEmitter<Create_Product>=new EventEmitter();
+
   create(Name:HTMLInputElement, Code:HTMLInputElement, Price:HTMLInputElement, Quantity:HTMLInputElement, Feature1:HTMLInputElement, Feature2:HTMLInputElement, CategoryId: HTMLInputElement){
     //this.showSpinner(SpinnerType.SquareJellyBox)
     const create_product: Create_Product = new Create_Product();
@@ -38,7 +41,6 @@ export class CreateComponent implements OnInit{
         messageType: MessageType.Error,
         position: Position.TopRight
         });
-
         return;
     }
     
@@ -59,6 +61,7 @@ export class CreateComponent implements OnInit{
         messageType: MessageType.Success,
         position: Position.TopRight
       });
+      this.createdProduct.emit(create_product);
     },errorMessage=>{
       this.alertify.message(errorMessage,{
         dismissOthers:true,

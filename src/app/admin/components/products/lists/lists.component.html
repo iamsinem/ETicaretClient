@@ -1,1 +1,72 @@
-<p>lists works!</p>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="categoryId">
+        <th mat-header-cell *matHeaderCellDef>Category Id</th>
+        <td mat-cell *matCellDef="let element"> {{element.kategori_id} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="productCode">
+        <th mat-header-cell *matHeaderCellDef>Product Code</th>
+        <td mat-cell *matCellDef="let element"> {{element.productCode}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="productName">
+        <th mat-header-cell *matHeaderCellDef>Product Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>  Price</th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="manufactureDate">
+        <th mat-header-cell *matHeaderCellDef>Manufacture Datw</th>
+        <td mat-cell *matCellDef="let element"> {{element.manufactureDate}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>Quantity</th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="feature1">
+        <th mat-header-cell *matHeaderCellDef>Feature1</th>
+        <td mat-cell *matCellDef="let element"> {{element.feature1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="feature2">
+        <th mat-header-cell *matHeaderCellDef>Feature2</th>
+        <td mat-cell *matCellDef="let element"> {{element.feature2}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef>Created Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="updatedDate">
+        <th mat-header-cell *matHeaderCellDef>Updated Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.updatedDate}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator (page)="pageChanged()"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements">
+   </mat-paginator>
+  </div>
+  

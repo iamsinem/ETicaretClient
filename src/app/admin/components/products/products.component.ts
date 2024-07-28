@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClientService } from '../../../services/common/http-client.service';
+import { Create_Product } from '../../../contracts/create_product';
+import { ListsComponent } from './lists/lists.component';
 //import { Product } from '../../../contracts/create_product';
 
 @Component({
@@ -50,4 +52,8 @@ export class ProductsComponent implements OnInit {
     controller: "products",
   },4).subscribe();*/
   }
-}
+  @ViewChild(ListsComponent) listComponents: ListsComponent
+  createdProduct(createdProduct:Create_Product)
+  {
+     this.listComponents.getProducts();
+  }}

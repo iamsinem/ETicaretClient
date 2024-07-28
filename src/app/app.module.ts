@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatMenuModule} from '@angular/material/menu';
 import { HttpClient, HttpClientModule ,provideHttpClient,withFetch} from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClient, HttpClientModule ,provideHttpClient,withFetch} from '@angul
     AdminModule,
     UiModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule
 ],
   providers: [
     {provide:"baseUrl",useValue:"http://localhost:5070/api",multi:true},
