@@ -10,6 +10,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { HttpClient, HttpClientModule ,provideHttpClient,withFetch} from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+
 @NgModule({
   declarations: [
     AppComponent
