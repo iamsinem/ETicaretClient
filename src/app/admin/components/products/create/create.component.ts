@@ -5,6 +5,7 @@ import { Create_Product } from '../../../../contracts/create_product';
 //import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
 import { BasketsComponent } from '../../../../ui/components/baskets/baskets.component';
+import { FileUploadOptions } from '../../../../services/common/file-upload/file-upload.component';
 
 @Component({
   selector: 'app-create',
@@ -16,13 +17,19 @@ export class CreateComponent implements OnInit{
   constructor( private ProductService: ProductService, private alertify: AlertifyService){
     
   }
-
+ 
   ngOnInit(): void {
     
   }
 
   @Output()createdProduct: EventEmitter<Create_Product>=new EventEmitter();
-
+  @Output() fileUploadOptions:Partial<FileUploadOptions>={
+    action:"upload",
+    controller:"products",
+    explanation:"Resimleri seçiniz...",
+    isAdminPage: true,
+    accept:".png, .jpg, .jpeg"
+  };
   create(Name:HTMLInputElement, Code:HTMLInputElement, Price:HTMLInputElement, Quantity:HTMLInputElement, Feature1:HTMLInputElement, Feature2:HTMLInputElement, CategoryId: HTMLInputElement){
     //this.showSpinner(SpinnerType.SquareJellyBox)
     const create_product: Create_Product = new Create_Product();

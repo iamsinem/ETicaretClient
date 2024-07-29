@@ -10,11 +10,12 @@ import {MatMenuModule} from '@angular/material/menu';
 import { HttpClient, HttpClientModule ,provideHttpClient,withFetch} from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DeleteDialogComponent } from './dialogs/delete-dialog/delete-dialog.component';
+import { FileUploadComponent } from './services/common/file-upload/file-upload.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
