@@ -6,6 +6,7 @@ import { DeleteDialogComponent, DeleteState } from '../../dialogs/delete-dialog/
 import { AlertifyService, MessageType, Position } from '../../services/admin/alertify.service';
 import { error } from 'console';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DialogService } from '../../services/common/dialog.service';
 
 declare var $: any;
 
@@ -19,7 +20,8 @@ export class DeleteDirective {
     private _renderer: Renderer2,
     private httpClientService:HttpClientService,
     public dialog: MatDialog,
-    private alertifyService : AlertifyService
+    private alertifyService : AlertifyService,
+    private dialogService:DialogService
   ) {
     const img = _renderer.createElement("img")
     img.setAttribute("src","../../../../../assets/delete.png");
@@ -35,31 +37,35 @@ export class DeleteDirective {
 
    @HostListener("click")
    async onClick(){
-    this.openDialog(async() =>{
-      console.log(this.id)
-      const td: HTMLTableCellElement = this.element.nativeElement;
-      this.httpClientService.delete({
-        controller:this.controller
-      },this.id).subscribe(data=>{
-        $(td.parentElement).fadeOut(700, ()=>{
-          this.callback.emit();
-          this.alertifyService.message("Ürün Başarıyla Silinmiştir!",{
+    this.dialogService.openDialog({
+      componentType:DeleteDialogComponent,
+      data:DeleteState.Yes,
+      afterClosed:async() =>{
+        console.log(this.id)
+        const td: HTMLTableCellElement = this.element.nativeElement;
+        this.httpClientService.delete({
+          controller:this.controller
+        },this.id).subscribe(data=>{
+          $(td.parentElement).fadeOut(700, ()=>{
+            this.callback.emit();
+            this.alertifyService.message("Ürün Başarıyla Silinmiştir!",{
+              dismissOthers:true,
+              messageType:MessageType.Success,
+              position:Position.TopRight
+           })
+        });
+        },(errorResponse:HttpErrorResponse)=>{
+          this.alertifyService.message("Ürün Silinirken Hata İle Karşılaşılmıştır!",{
             dismissOthers:true,
-            messageType:MessageType.Success,
+            messageType:MessageType.Error,
             position:Position.TopRight
          })
+        });
+      }
       });
-      },(errorResponse:HttpErrorResponse)=>{
-        this.alertifyService.message("Ürün Silinirken Hata İle Karşılaşılmıştır!",{
-          dismissOthers:true,
-          messageType:MessageType.Error,
-          position:Position.TopRight
-       })
-      });
-    });
    }
 
-   openDialog(afterClosed: any): void {
+   /*openDialog(afterClosed: any): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '250px',
       data: DeleteState.Yes,
@@ -70,6 +76,6 @@ export class DeleteDirective {
       afterClosed();
      }
     });
-  }
+  }*/
 
 }
