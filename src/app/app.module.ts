@@ -9,13 +9,13 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {MatMenuModule} from '@angular/material/menu';
 import { HttpClient, HttpClientModule ,provideHttpClient,withFetch} from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { DeleteDialogComponent } from './dialogs/delete-dialog/delete-dialog.component';
-import { FileUploadComponent } from './services/common/file-upload/file-upload.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -25,7 +25,9 @@ import { FileUploadComponent } from './services/common/file-upload/file-upload.c
     UiModule,
     MatMenuModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
+    
 ],
   providers: [
     {provide:"baseUrl",useValue:"http://localhost:5070/api",multi:true},
