@@ -19,7 +19,8 @@ export class FileUploadComponent {
     private httpClientService:HttpClientService,
     private alertifyService:AlertifyService,
     private dialog:MatDialog,
-    private dialogService:DialogService
+    private dialogService:DialogService,
+  
 
   ){}
   public files: NgxFileDropEntry[] = [];
