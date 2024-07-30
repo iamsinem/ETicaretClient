@@ -20,7 +20,7 @@ import { FileUploadModule } from "../services/common/file-upload/file-upload.mod
 ],
   exports: [
     DeleteDialogComponent,
-
+   
   ]
 })
 export class DialogModule { }
