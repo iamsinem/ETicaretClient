@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, signal, ViewChild ,Output } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
@@ -19,14 +19,15 @@ export class CreateCustomerComponent implements OnInit {
   errorMessage = signal('');
   
 
+
   constructor(private alertify: AlertifyService, 
-    private customerService:CustomerService)
+    private CustomerService:CustomerService)
      {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
 
-      console.log(this.customerService);
+      console.log(this.CustomerService);
   }
 
  
@@ -49,8 +50,8 @@ updateErrorMessage() {
   ngOnInit(): void {
     // Initialize any data or perform setup tasks here
   }
-
-  createCustomer(name: HTMLInputElement, surname: HTMLInputElement, phoneNumber: HTMLInputElement, email: HTMLInputElement, address: HTMLInputElement, tcNo: HTMLInputElement, birthDate: HTMLInputElement, gender: MatSelect) {
+@Output()createdProduct: EventEmitter<Create_Customer>=new EventEmitter();
+  createCustomer(name: HTMLInputElement, surname: HTMLInputElement, phoneNumber: HTMLInputElement, email: HTMLInputElement, address: HTMLInputElement, tcNo: HTMLInputElement, birthDate: HTMLInputElement) {
     const create_customer: Create_Customer=new Create_Customer();
 
     create_customer.name=name.value;
@@ -60,14 +61,22 @@ updateErrorMessage() {
     create_customer.address=address.value;
     create_customer.tcNo=parseInt(tcNo.value);
     create_customer.birthDate=new Date(birthDate.value);
-    create_customer.gender=gender.value;
 
-    this.customerService.createCustomer(create_customer,() => {
-      this.alertify.message("Müşteri başarıyla eklenmiştir", {
-        dismissOthers: true,
-        messageType: MessageType.Success,
-        position: Position.TopRight
-      });
-    });
+    this.CustomerService.createCustomer(create_customer, () => {
+      // this.hideSpinner(SpinnerType.SquareJellyBox);
+       this.alertify.message("Ürün başari ile eklenmistir", {
+         dismissOthers: true,
+         messageType: MessageType.Success,
+         position: Position.TopRight
+       });
+       this.createdProduct.emit(create_customer);
+     },errorMessage=>{
+       this.alertify.message(errorMessage,{
+         dismissOthers:true,
+         messageType:MessageType.Error,
+         position:Position.TopRight
+       })
+     }
+   );
   }
 }
