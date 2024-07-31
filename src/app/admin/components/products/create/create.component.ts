@@ -7,12 +7,41 @@ import { AlertifyService, MessageType, Position } from '../../../../services/adm
 import { BasketsComponent } from '../../../../ui/components/baskets/baskets.component';
 import { FileUploadOptions } from '../../../../services/common/file-upload/file-upload.component';
 
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
+
 export class CreateComponent implements OnInit{
+
+
+  selectedCategory: string = 'one'; // Varsayılan değer
+  categoryId: number = 1; // Varsayılan değer
+
+  updateCategoryId() {
+    switch (this.selectedCategory) {
+      case 'one':
+        this.categoryId = 1;
+        break;
+      case 'two':
+        this.categoryId = 2;
+        break;
+      case 'three':
+        this.categoryId = 3;
+        break;
+      case 'four':
+        this.categoryId = 4;
+        break;
+      case 'five':
+        this.categoryId = 5;
+        break;
+      default:
+        this.categoryId = 1;
+    }
+  }
+
 
   constructor( private ProductService: ProductService, private alertify: AlertifyService){
     

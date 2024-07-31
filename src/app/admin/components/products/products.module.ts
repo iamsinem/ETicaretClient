@@ -13,6 +13,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { DeleteDirective } from '../../../directives/admin/delete.directive';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FileUploadModule } from "../../../services/common/file-upload/file-upload.module";
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -36,7 +39,7 @@ import { FileUploadModule } from "../../../services/common/file-upload/file-uplo
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
-    FileUploadModule
+    FileUploadModule,MatSelectModule,FormsModule
 ]
 })
 export class ProductsModule { }

@@ -11,3 +11,9 @@
 .btn{
     margin: 5px 5px 5px;
 }
+
+.hidden-input {
+    display: none; /* Bu, elemanı tamamen gizler ve yer kaplamaz */
+    /* Veya */
+    visibility: hidden; /* Bu, elemanı görünmez yapar ancak yer kaplamaya devam eder */
+  }
