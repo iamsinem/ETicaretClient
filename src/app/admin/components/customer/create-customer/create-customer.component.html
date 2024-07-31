@@ -1,0 +1,57 @@
+<mat-form-field class="customer-create-form">
+    <mat-label>Name</mat-label>
+    <input matInput #txtname >
+  </mat-form-field>
+
+  <mat-form-field class="customer-create-form">
+    <mat-label>Surname</mat-label>
+    <input matInput #txtsurname>
+  </mat-form-field>
+
+  <mat-form-field class="customer-create-form"> 
+    <mat-label>Phone Number</mat-label>
+    <input matInput #txtphoneNumber>
+  </mat-form-field>
+
+  
+ <mat-form-field class="customer-create-form">
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        [formControl]="email"
+        (blur)="updateErrorMessage()"
+        required
+      #txtemail>
+      @if (email.invalid) {
+        <mat-error>{{errorMessage()}}</mat-error>
+      }
+  </mat-form-field>
+  
+
+  <mat-form-field class="customer-create-form">
+    <mat-label>Address</mat-label>
+    <input matInput #txtaddress>
+  </mat-form-field>
+
+  <mat-form-field class="customer-create-form">
+    <mat-label>T.C. No</mat-label>
+    <input matInput maxlength="11" #txttcNo> 
+  </mat-form-field>
+
+  <mat-form-field class="customer-create-form">
+    <mat-label>Birth Date</mat-label>
+    <input matInput [matDatepicker]="picker" #txtbirthDate>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="customer-create-form">
+    <mat-label>Gender</mat-label>
+    <mat-select #txtgender>
+      <mat-option value="male" >Male</mat-option>
+      <mat-option value="female" >Female</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" class="crtbtn" (click)="createCustomer(txtname,txtsurname,txtphoneNumber, txtemail,txtaddress,txttcNo,txtbirthDate,txtgender)">Create Customer</button>

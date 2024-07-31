@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './customer.component.scss'
 })
 export class CustomerComponent {
+createdCustomer($event: Event) {
+throw new Error('Method not implemented.');
+}
 
 }

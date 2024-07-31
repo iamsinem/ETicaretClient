@@ -22,9 +22,9 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
   ProductsComponent,
-   CreateComponent,
-   ListsComponent,
-   DeleteDirective,
+  CreateComponent,
+  ListsComponent,
+  DeleteDirective,
   
   ],
   imports: [
