@@ -5,6 +5,7 @@ import { MatSelect } from '@angular/material/select';
 import { merge } from 'rxjs';
 import { Create_Customer } from '../../../../contracts/create_customer';
 import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
+import { CustomerService } from '../../../../services/common/models/customer.service';
 
 @Component({
   selector: 'app-create-customer',
@@ -16,15 +17,20 @@ export class CreateCustomerComponent implements OnInit {
   readonly email = new FormControl('', [Validators.required, Validators.email]);
 
   errorMessage = signal('');
-  customerService: any; // İhtiyaca göre tip belirlemeyi unutmayın
+  
 
-  constructor(private alertify: AlertifyService) {
+  constructor(private alertify: AlertifyService, 
+    private customerService:CustomerService)
+     {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
+
+      console.log(this.customerService);
   }
 
-  updateErrorMessage() {
+ 
+updateErrorMessage() {
     if (this.email.hasError('required')) {
       this.errorMessage.set('You must enter a value');
     } else if (this.email.hasError('email')) {
@@ -56,7 +62,7 @@ export class CreateCustomerComponent implements OnInit {
     create_customer.birthDate=new Date(birthDate.value);
     create_customer.gender=gender.value;
 
-    this.customerService.createCustomer(create_customer).subscribe(() => {
+    this.customerService.createCustomer(create_customer,() => {
       this.alertify.message("Müşteri başarıyla eklenmiştir", {
         dismissOthers: true,
         messageType: MessageType.Success,

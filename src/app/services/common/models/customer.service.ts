@@ -10,9 +10,11 @@ import { Create_Customer } from "../../../contracts/create_customer";
 
 export class CustomerService{
 
-    constructor(private httpClientservice: HttpClientService){}
+    constructor(private httpClientservice: HttpClientService){
+        
+    }
 
-    createCustomer(customer:Create_Customer,successCallBack?:any){
+    createCustomer(customer:Create_Customer,successCallBack?: ()=>void){
      this.httpClientservice.post({
         controller:"customer"
      },customer).subscribe(result=>{
