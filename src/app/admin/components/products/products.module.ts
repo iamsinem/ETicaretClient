@@ -19,9 +19,9 @@ import { FileUploadModule } from "../../../services/common/file-upload/file-uplo
 @NgModule({
   declarations: [
   ProductsComponent,
-   CreateComponent,
-   ListsComponent,
-   DeleteDirective,
+  CreateComponent,
+  ListsComponent,
+  DeleteDirective,
   
   ],
   imports: [

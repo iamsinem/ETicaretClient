@@ -18,10 +18,11 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
     NgxFileDropModule,
     MatDialogModule,
     MatButtonModule,
-
+    
   ],
   exports:[
     FileUploadComponent
-  ]
+  ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class FileUploadModule { }
