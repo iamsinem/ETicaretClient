@@ -17,10 +17,10 @@ export class CustomerService{
         
     }
 
-    createCustomer(customer: Create_Customer, successCallBack?: ()=>void, errorCallBack?: (errorMessage:string)=>void){
+    createCustomer(customers: Create_Customer, successCallBack?: ()=>void, errorCallBack?: (errorMessage:string)=>void){
         this.httpClientservice.post({
-          controller:"customer"
-        },customer).subscribe(result => {
+          controller:"customers"
+        },customers).subscribe(result => {
           successCallBack();
         }, (errorResponse:HttpErrorResponse)=>{
           const _error:Array<{key:string,value:Array<string>}>=errorResponse.error;
@@ -35,9 +35,9 @@ export class CustomerService{
     }
 
     async read(page:number=0, size:number=5,successCallBack?:()=>void, errorCallBack?:(errorMessage:
-        string)=> void):Promise<{totalCount:number; customer:List_Customer[]}>{
-         const promiseData: Promise<{totalCount:number; customer:List_Customer[]}>=  this.httpClientservice.get<{totalCount:number; customer:List_Customer[]}>({
-            controller:"customer",
+        string)=> void):Promise<{totalCount:number; customers:List_Customer[]}>{
+         const promiseData: Promise<{totalCount:number; customers:List_Customer[]}>=  this.httpClientservice.get<{totalCount:number; customers:List_Customer[]}>({
+            controller:"customers",
             queryString:`page=${page}&size=${size}`
       
           }).toPromise();

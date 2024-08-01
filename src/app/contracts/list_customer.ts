@@ -1,13 +1,13 @@
 export class List_Customer{
-    id:number;
-    name:string;
-    surname:string;
-    phoneNumber:number;
-    email:string;
-    address:string;
-    tcNo:number;
-    birthDate:Date;
-    gender:string;
-    createdDate: Date;
-    updatedDate: Date;
+    Id:number;
+    FirstName:string;
+    LastName:string;
+    Phone:number;
+    Email:string;
+    Address:string;
+    Tc:number;
+    BirthDate:Date;
+    Gender:string;
+    CreatedDate: Date;
+    UpdatedDate: Date;
 }

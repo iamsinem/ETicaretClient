@@ -10,6 +10,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { HttpClient, HttpClientModule ,provideHttpClient,withFetch} from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -26,8 +28,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatMenuModule,
     HttpClientModule,
     MatPaginatorModule,
-    MatDialogModule
-    
+    MatDialogModule,MatFormFieldModule,MatInputModule
 ],
   providers: [
     {provide:"baseUrl",useValue:"http://localhost:5070/api",multi:true},

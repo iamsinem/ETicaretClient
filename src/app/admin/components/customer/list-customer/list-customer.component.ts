@@ -19,14 +19,14 @@ export class ListCustomerComponent {
     private alertifyService:AlertifyService,
     private dialogService :DialogService
    ){}
-displayedColumns: string[] = ['id', 'name', 'surname', 'phoneNumber','email','address','tcNo','birthDate','gender','createdDate','updatedDate'];
+displayedColumns: string[] = ['Id', 'FirstName', 'LastName', 'Phone','Email','Address','Tc','BirthDate','Gender','CreatedDate','UpdatedDate'];
 dataSource : MatTableDataSource<List_Customer> = null;
 
 @ViewChild(MatPaginator) paginator: MatPaginator;
 async getCustomer(){
-const allCustomer:{totalCount:number; customer:List_Customer[]}= await this.customerService.read(this.paginator ? this.paginator.pageIndex:0,this.paginator ? this.paginator.pageSize:5)
-this.dataSource=new MatTableDataSource<List_Customer>(allCustomer.customer);
-this.paginator.length=allCustomer.totalCount;
+  const allCustomer:{totalCount:number; customers:List_Customer[]}= await this.customerService.read(this.paginator ? this.paginator.pageIndex:0,this.paginator ? this.paginator.pageSize:5)
+  this.dataSource=new MatTableDataSource<List_Customer>(allCustomer.customers);
+  this.paginator.length=allCustomer.totalCount;
 //this.dataSource.paginator = this.paginator;
 }
 
