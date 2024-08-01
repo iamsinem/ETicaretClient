@@ -18,7 +18,7 @@ export class CreateCustomerComponent implements OnInit {
 
   errorMessage = signal('');
   
-
+   
 
   constructor(private alertify: AlertifyService, 
     private CustomerService:CustomerService)
@@ -61,6 +61,7 @@ updateErrorMessage() {
     create_customer.address=address.value;
     create_customer.tcNo=parseInt(tcNo.value);
     create_customer.birthDate=new Date(birthDate.value);
+
 
     this.CustomerService.createCustomer(create_customer, () => {
       // this.hideSpinner(SpinnerType.SquareJellyBox);
