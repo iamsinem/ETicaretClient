@@ -14,6 +14,24 @@ import { CustomerService } from '../../../../services/common/models/customer.ser
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateCustomerComponent implements OnInit {
+
+  selectedGender: string = "one";
+  categoryId: number = 1;
+
+  updateGender() {
+    switch (this.selectedGender) {
+      case 'one':
+        this.categoryId = 1;
+        break;
+      case 'two':
+        this.categoryId = 2;
+        break;
+      default:
+        this.categoryId = 1;
+    }
+  }
+
+
   readonly email = new FormControl('', [Validators.required, Validators.email]);
 
   errorMessage = signal('');
@@ -50,27 +68,30 @@ updateErrorMessage() {
   ngOnInit(): void {
     // Initialize any data or perform setup tasks here
   }
-@Output()createdProduct: EventEmitter<Create_Customer>=new EventEmitter();
-  createCustomer(name: HTMLInputElement, surname: HTMLInputElement, phoneNumber: HTMLInputElement, email: HTMLInputElement, address: HTMLInputElement, tcNo: HTMLInputElement, birthDate: HTMLInputElement) {
+@Output()createdCustomer: EventEmitter<Create_Customer>=new EventEmitter();
+  createCustomer(FirstName: HTMLInputElement, LastName: HTMLInputElement, Phone: HTMLInputElement, Email: HTMLInputElement, Address: HTMLInputElement, Tc: HTMLInputElement, BirthDate: HTMLInputElement, Gender: HTMLInputElement) {
     const create_customer: Create_Customer=new Create_Customer();
 
-    create_customer.name=name.value;
-    create_customer.surname=surname.value;
-    create_customer.phoneNumber=parseInt(phoneNumber.value);
-    create_customer.email=email.value;
-    create_customer.address=address.value;
-    create_customer.tcNo=parseInt(tcNo.value);
-    create_customer.birthDate=new Date(birthDate.value);
+    create_customer.FirstName=FirstName.value;
+    create_customer.LastName=LastName.value;
+    create_customer.Phone=Phone.value;
+    create_customer.Email=Email.value;
+    create_customer.Address=Address.value;
+    create_customer.Tc=Tc.value;
+    create_customer.BirthDate=new Date(BirthDate.value);
+    create_customer.Gender = Gender.value
+  
+
 
 
     this.CustomerService.createCustomer(create_customer, () => {
       // this.hideSpinner(SpinnerType.SquareJellyBox);
-       this.alertify.message("Ürün başari ile eklenmistir", {
+       this.alertify.message("Müşteri başari ile eklenmistir", {
          dismissOthers: true,
          messageType: MessageType.Success,
          position: Position.TopRight
        });
-       this.createdProduct.emit(create_customer);
+       this.createdCustomer.emit(create_customer);
      },errorMessage=>{
        this.alertify.message(errorMessage,{
          dismissOthers:true,
