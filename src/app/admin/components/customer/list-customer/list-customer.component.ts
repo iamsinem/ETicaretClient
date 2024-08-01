@@ -19,8 +19,10 @@ export class ListCustomerComponent {
     private alertifyService:AlertifyService,
     private dialogService :DialogService
    ){}
+
 displayedColumns: string[] = ['Id', 'FirstName', 'LastName', 'Phone','Email','Address','Tc','BirthDate','Gender','CreatedDate','UpdatedDate'];
 dataSource : MatTableDataSource<List_Customer> = null;
+
 
 @ViewChild(MatPaginator) paginator: MatPaginator;
 async getCustomer(){
@@ -37,4 +39,9 @@ async ngOnInit(){
 await this.getCustomer();
 }
 
+applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.dataSource.filter = filterValue.trim().toLowerCase();
+
+}
 }
