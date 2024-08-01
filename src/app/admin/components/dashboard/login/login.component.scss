@@ -1,0 +1,86 @@
+.e-mail-container mat-form-field + mat-form-field {
+    margin-left: 10px;
+    margin-bottom: 16px;
+  }
+
+  
+  .password-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .password-right-align {
+    text-align: right;
+  }
+  
+  input.password-right-align::-webkit-outer-spin-button,
+  input.password-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.password-right-align {
+    -moz-appearance: textfield;
+  }
+
+  .login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Dikey ortalama */
+    border: 2px solid #333; /* Kenarlık kalınlığı ve rengi */
+    border-radius: 20px; /* Kenarların yuvarlatılması */
+    padding: 20px; /* Kenarlık ile içerik arasındaki boşluk */
+    max-width: 400px; /* Maksimum genişlik (isteğe bağlı) */
+    margin: 0 auto; /* Sayfanın ortasına hizalama (isteğe bağlı) */
+    background-color: #f9f9f9; /* Arka plan rengi (isteğe bağlı) */
+    margin-top: 10%;
+    }
+
+  section {
+  display: table;
+}
+
+
+.label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.button {
+  display: table-cell;
+  max-width: 600px;
+  text-align: center;
+  
+}
+
+.button{
+  margin: 8px 8px 8px 0;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+}
+
+.login-out{
+text-align: center;
+bottom: 10%;
+color: blue;
+border: 2px solid #333; /* Kenarlık kalınlığı ve rengi */
+border-radius: 20px; /* Kenarların yuvarlatılması */
+height: 80vh;
+}
+.custom-button:hover {
+  background-color: green; /* Hover durumunda arka plan rengi */
+  border: 2px solid black;
+}
+
+.logo {
+  position: absolute; /* Resmi konumlandırmak için */
+  top: 10%; /* Üstten 0 piksel */
+  left: 5%; /* Soldan 0 piksel */
+  width: 200px; /* Opsiyonel: resmin genişliğini belirler */
+  height: auto; /* Yüksekliği orantılı olarak ayarlar */
+}
