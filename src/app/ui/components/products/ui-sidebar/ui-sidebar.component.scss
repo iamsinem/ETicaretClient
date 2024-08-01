@@ -1,0 +1,40 @@
+/* styles.css veya componentinize özgü CSS dosyası */
+.menu-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid red;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.menu-button img {
+  width: 50px;
+  height: 50px;
+}
+
+.menu-button span {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.menu-button button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.menu-button button:hover {
+  border-color: green;
+}
