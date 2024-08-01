@@ -12,6 +12,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator'; 
+import { MatTableModule } from '@angular/material/table';
+
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -25,7 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
     ]),
     MatSidenavModule,MatFormFieldModule,MatInputModule,
     ReactiveFormsModule, MatDatepickerModule,
-    MatNativeDateModule,MatSelectModule,MatButtonModule
+    MatNativeDateModule,MatSelectModule,MatButtonModule,
+    MatPaginatorModule,MatTableModule
   ],
 })
 export class CustomerModule { }

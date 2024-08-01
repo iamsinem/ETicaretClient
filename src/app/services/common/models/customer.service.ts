@@ -4,6 +4,7 @@ import { Create_Customer } from '../../../contracts/create_customer';
 import { error } from 'node:console';
 import { HttpErrorResponse } from '@angular/common/http';
 import { firstValueFrom, Observable } from 'rxjs';
+import { List_Customer } from '../../../contracts/list_customer';
 
 
 @Injectable({
@@ -11,8 +12,6 @@ import { firstValueFrom, Observable } from 'rxjs';
 })
 
 export class CustomerService{
-
-
 
     constructor(private httpClientservice: HttpClientService){
         
@@ -26,12 +25,26 @@ export class CustomerService{
         }, (errorResponse:HttpErrorResponse)=>{
           const _error:Array<{key:string,value:Array<string>}>=errorResponse.error;
           let message="";
-          /*_error.forEach((v,index)=>{
+          _error.forEach((v,index)=>{
          v.value.forEach((_v,_index)=>{
           message+=`${_v}<br>`;
           });
           });
-          errorCallBack(message);*/
+          errorCallBack(message);
         });
     }
+
+    async read(page:number=0, size:number=5,successCallBack?:()=>void, errorCallBack?:(errorMessage:
+        string)=> void):Promise<{totalCount:number; customer:List_Customer[]}>{
+         const promiseData: Promise<{totalCount:number; customer:List_Customer[]}>=  this.httpClientservice.get<{totalCount:number; customer:List_Customer[]}>({
+            controller:"customer",
+            queryString:`page=${page}&size=${size}`
+      
+          }).toPromise();
+      
+          promiseData.then(d=> successCallBack())
+          .catch((errorResponse:HttpErrorResponse)=> errorCallBack(errorResponse.message))
+      
+          return await promiseData;
+        }
 }
