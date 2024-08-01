@@ -48,9 +48,11 @@
 
   <mat-form-field class="customer-create-form">
     <mat-label>Gender</mat-label>
-    <mat-select #txtgender>
-      <mat-option value="male" >Male</mat-option>
-      <mat-option value="female" >Female</mat-option>
+    <mat-select txtgender>
+      <mat-option value="one" >Male</mat-option>
+      <mat-option value="two" >Female</mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-flat-button color="primary" class="crtbtn" (click)="createCustomer(txtname,txtsurname,txtphoneNumber, txtemail,txtaddress,txttcNo,txtbirthDate,txtgender)">Create Customer</button>
+<button mat-flat-button color="primary" class="crtbtn" (click)="createCustomer(txtname, txtsurname, txtphoneNumber, txtemail, txtaddress, txttcNo, txtbirthDate)">
+    Create Customer
+</button>
