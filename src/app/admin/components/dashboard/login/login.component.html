@@ -1,41 +1,38 @@
 <div class="login-out">
-
-  <img src="assets\teknoloji_transparent.png" alt="logo" class="logo"/>
-
+  <img src="assets/teknoloji_transparent.png" alt="logo" class="logo"/>
   <h1 style="margin-top: 10%;">Stajyer Teknolojiye Hoşgeldiniz</h1>
       
-    <div class="login">
+  <div class="login">
     <div class="e-mail-container">
-        <mat-form-field>
-          <mat-label>Lütfen E-mail Giriniz</mat-label>
-          <input
-            matInput
-            placeholder="Türksat@example.com"
-            [formControl]="email"
-            (blur)="updateErrorMessage()"
-            required
-          />
-          @if (email.invalid) {
-            <mat-error>{{errorMessage()}}</mat-error>
-          }
-        </mat-form-field>
-      </div>
-      <div class="password-container">
-        <mat-form-field>
-          <mat-label>Lütfen Şifrenizi Giriniz</mat-label>
-          <input matInput [type]="hide() ? 'password' : 'text'" />
-          <button
-            mat-icon-button
-            matSuffix
-            (click)="clickEvent($event)"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide()"
-          >
-            <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
-        <div class="button">
-          <button  mat-flat-button class="custom-button">Giriş Yap</button>
-        </div>
+      <mat-form-field>
+        <mat-label>Lütfen E-mail Giriniz</mat-label>
+        <input
+          matInput
+          placeholder="Turksat@example.com"
+          [formControl]="email"
+          (blur)="updateErrorMessage()"
+          required
+        />
+        <mat-error *ngIf="email.invalid">{{errorMessage}}</mat-error>
+      </mat-form-field>
     </div>
+    <div class="password-container">
+      <mat-form-field>
+        <mat-label>Lütfen Şifrenizi Giriniz</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div class="button">
+        <button (click)="onLogin()" type="submit" mat-flat-button class="custom-button">Giriş Yap</button>
+      </div>
+    </div>
+  </div>
 </div>
