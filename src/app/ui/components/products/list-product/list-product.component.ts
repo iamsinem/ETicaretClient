@@ -17,19 +17,11 @@ export class ListProductComponent implements OnInit{
 
   constructor(private uiproductservice:UiProductService,
   ){}
-  async pageChanged(){
-    await this.getProducts();
-  }
-  async ngOnInit(){
-   await this.getProducts();
-  }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
   
+
+  dataSource: MatTableDataSource<UiList_Product>= new MatTableDataSource<UiList_Product>();
   displayedColumns: string[] = ['productCode', 'productName', 'price', 'manufactureDate', 'quantity', 'feature1', 'feature2'];
-  dataSource: MatTableDataSource<UiList_Product>;
+
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -40,6 +32,16 @@ export class ListProductComponent implements OnInit{
      this.paginator.length=allProducts.totalCount;
      //this.dataSource.paginator = this.paginator;
  }
+ async pageChanged(){
+  await this.getProducts();
+}
+async ngOnInit(){
+ await this.getProducts();
+}
+applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.dataSource.filter = filterValue.trim().toLowerCase();
+}
     
 }
 

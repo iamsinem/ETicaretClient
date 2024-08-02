@@ -1,13 +1,14 @@
   <!-- list-product.component.html -->
-<div class="table-container">
-    <mat-form-field class="filter">
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Pizza">
-    </mat-form-field>
+  <mat-form-field class="filter">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Pizza">
+  </mat-form-field>
+
+<div class="mat-elevation-z8">
+   
   
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-  
-      <!-- Product Code Column -->
+
       <ng-container matColumnDef="productCode">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Code </th>
         <td mat-cell *matCellDef="let element"> {{element.productCode}} </td>
