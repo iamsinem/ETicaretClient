@@ -7,39 +7,66 @@ import {merge} from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
+import { LoginService } from '../../../../services/login/login.service';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule,MatIconModule,MatButtonModule, MatDividerModule, MatIconModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule,MatIconModule,MatButtonModule, MatDividerModule, MatIconModule,CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
   readonly email = new FormControl('', [Validators.required, Validators.email]);
+  readonly password = new FormControl('', [Validators.required]);
 
-  errorMessage = signal('');
+  errorMessage: string = '';
+  hide = true;
 
-  constructor() {
-    merge(this.email.statusChanges, this.email.valueChanges)
+  onLogin() {
+    if (this.email.invalid || this.password.invalid) {
+      this.errorMessage = 'Lütfen geçerli bir e-mail ve şifre giriniz.';
+      return;
+    }
+
+    const loginObj = {
+      userMail: this.email.value,
+      password: this.password.value
+    };
+
+    this.auth.login(loginObj).subscribe(
+      response => {
+        console.log('Login successful');
+        this.router.navigate(['admin/products']);
+      },
+      error => {
+        console.log('Login failed');
+        this.errorMessage = 'Invalid email or password.';
+      }
+    );
+  }
+
+  constructor(private auth: LoginService, private router: Router) {
+    merge(this.email.statusChanges, this.email.valueChanges,)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
   }
 
   updateErrorMessage() {
-    if (this.email.hasError('Gerekli')) {
-      this.errorMessage.set('Lütfen Geçerli bir e-mail giriniz');
+    if (this.email.hasError('required')) {
+      this.errorMessage = 'Lütfen geçerli bir e-mail giriniz.';
     } else if (this.email.hasError('email')) {
-      this.errorMessage.set('Lütfen Geçerli bir e-mail giriniz');
+      this.errorMessage = 'Lütfen geçerli bir e-mail giriniz.';
     } else {
-      this.errorMessage.set('');
+      this.errorMessage = '';
     }
   }
 
-  hide = signal(true);
   clickEvent(event: MouseEvent) {
-    this.hide.set(!this.hide());
+    this.hide = !this.hide;
     event.stopPropagation();
   }
 }
