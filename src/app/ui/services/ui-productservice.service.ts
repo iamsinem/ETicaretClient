@@ -38,5 +38,6 @@ export class UiProductService {
       throw error; // İsteğe bağlı olarak hatayı yeniden fırlatabilirsiniz
     }
   }
+
 }
 

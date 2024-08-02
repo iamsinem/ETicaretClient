@@ -4,6 +4,7 @@ import { UiProductService } from '../../../services/ui-productservice.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { UiList_Product } from '../../../uicontracts/listProduct';
 import { MatSort } from '@angular/material/sort';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { MatSort } from '@angular/material/sort';
 export class ListProductComponent implements OnInit{
 
   constructor(private uiproductservice:UiProductService,
+              private route:ActivatedRoute
   ){}
   
 
@@ -42,7 +44,7 @@ applyFilter(event: Event) {
   const filterValue = (event.target as HTMLInputElement).value;
   this.dataSource.filter = filterValue.trim().toLowerCase();
 }
-    
-}
 
+
+}
 
