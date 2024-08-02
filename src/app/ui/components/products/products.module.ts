@@ -11,6 +11,8 @@ import {MatTableModule} from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     ProductsComponent,
@@ -23,10 +25,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
       {path:"",component:ProductsComponent}
     ]),
     MatSidenavModule,MatMenuModule,MatListModule,MatTableModule,
-    FormsModule,MatPaginatorModule,MatFormFieldModule
+    FormsModule,MatPaginatorModule,MatFormFieldModule,MatSortModule,
+    MatInputModule
   ],
   exports:[
-    ListProductComponent
+    ProductsComponent
   ]
 
 })

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClientService } from '../../../services/common/http-client.service';
+import { ListProductComponent } from './list-product/list-product.component';
 
 @Component({
   selector: 'app-products',
@@ -8,15 +9,10 @@ import { HttpClientService } from '../../../services/common/http-client.service'
 })
 export class ProductsComponent implements OnInit{
   constructor(private httpClientService:HttpClientService){
-    console.log(2)
+   
   }
 
   ngOnInit(): void {
-    console.log(1)
-    this.httpClientService.get({
-      controller: "products"
-      }).subscribe(data=>console.log(data))
-
-    
+        
     }
 }
