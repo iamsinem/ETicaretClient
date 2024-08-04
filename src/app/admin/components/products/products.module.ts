@@ -15,6 +15,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FileUploadModule } from "../../../services/common/file-upload/file-upload.module";
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { SidebarComponent } from '../../layout/components/sidebar/sidebar.component';
+import { ComponentsModule } from '../../layout/components/components.module';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { FormsModule } from '@angular/forms';
   CreateComponent,
   ListsComponent,
   DeleteDirective,
+  
   
   ],
   imports: [
@@ -37,7 +40,9 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
-    FileUploadModule,MatSelectModule,FormsModule
+    FileUploadModule,MatSelectModule,FormsModule,ComponentsModule
+],
+exports:[
 ]
 })
 export class ProductsModule { }

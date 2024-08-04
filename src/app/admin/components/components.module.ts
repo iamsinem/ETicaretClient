@@ -5,19 +5,22 @@ import { OrderModule } from './order/order.module';
 import { CustomerModule } from './customer/customer.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { LayoutComponent } from '../layout/layout.component';
+import { SidebarComponent } from '../layout/components/sidebar/sidebar.component';
 
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     ProductsModule,
     OrderModule,
     CustomerModule,
     DashboardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
   ]
 })
 export class ComponentsModule { }

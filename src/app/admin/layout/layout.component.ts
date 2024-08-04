@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertifyService, MessageType, Position } from '../../services/admin/alertify.service';
+import { Router, NavigationEnd } from '@angular/router';
 declare var alertify: any
 
 @Component({
@@ -8,7 +9,8 @@ declare var alertify: any
   styleUrl: './layout.component.scss'
 })
 export class LayoutComponent implements OnInit {
-  constructor(private alertify: AlertifyService){}
+  showSidebar: boolean = false;
+  constructor(private alertify: AlertifyService, private router: Router){}
   ngOnInit(): void {
     this.alertify.message("merhaba",{
       messageType: MessageType.Success,
@@ -16,5 +18,16 @@ export class LayoutComponent implements OnInit {
       position: Position.TopRight
 
     })
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.checkRoute(event.url);
+      }
+    });
+    
   }
+  checkRoute(url: string) {
+    // Örneğin, sidebar'ın görünmesini istemediğiniz sayfa '/login' ise
+    this.showSidebar = url !== '/login';
+  }
+
 }

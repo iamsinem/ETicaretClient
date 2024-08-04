@@ -14,6 +14,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator'; 
 import { MatTableModule } from '@angular/material/table';
+import { ComponentsModule } from '../../layout/components/components.module';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,10 @@ import { MatTableModule } from '@angular/material/table';
   ],
   imports: [
     CommonModule,
+    ComponentsModule,
     RouterModule.forChild([
       {path: "",component:CustomerComponent},
+      
     ]),
     MatSidenavModule,MatFormFieldModule,MatInputModule,
     ReactiveFormsModule, MatDatepickerModule,

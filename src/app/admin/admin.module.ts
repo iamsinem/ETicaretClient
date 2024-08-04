@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { LayoutModule } from './layout/layout.module';
 import { ComponentsModule } from './components/components.module';
 import { FileUploadModule } from '../services/common/file-upload/file-upload.module';
+import { LayoutComponent } from './layout/layout.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProductsModule } from './components/products/products.module';
 
 
 
@@ -11,8 +14,8 @@ import { FileUploadModule } from '../services/common/file-upload/file-upload.mod
   imports: [
     CommonModule,
     LayoutModule,
-    ComponentsModule,
-    FileUploadModule
+    FileUploadModule,
+    ComponentsModule
   ],
   exports:[
     LayoutModule
