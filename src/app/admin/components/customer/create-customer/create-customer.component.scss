@@ -1,14 +1,28 @@
 :host {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-.customer-create-form{
-  margin: 5px 5px 5px ;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 400px; /* Formun genişliği */
+  padding: 16px; /* Formun etrafındaki boşluk */
 }
 
-.crtbtn{
+.customer-create-form {
+  margin: 8px 0; /* Üst ve alt boşluk */
+  width: 100%; /* Form alanlarının genişliği */
+}
 
-    margin: 5px 5px 5px ;
+.crtbtn {
+  margin: 16px 0; /* Üst ve alt boşluk */
+  align-self: flex-start; /* Butonu sola hizalar */
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 400px;
+  padding: 16px;
+  background: #eee;
+  border: 1px solid #555;
 }

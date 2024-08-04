@@ -12,7 +12,6 @@ import { BasketsModule } from './baskets/baskets.module';
     ProductsModule,
     HomeModule,
     BasketsModule,
-    
   ]
 })
 export class ComponentsModule { }

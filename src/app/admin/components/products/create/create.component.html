@@ -1,3 +1,5 @@
+<div class="container">
+<div class="form-container">
 <mat-form-field class="product-create">
     <mat-label>Name</mat-label>
     <input matInput #txtName>
@@ -40,6 +42,9 @@
     <input class="hidden-input" matInput type="number" min="1" [value]="categoryId" #txtCategoryId>
 </mat-form-field>
   
-<button mat-flat-button class="btn" color="primary" (click)="create(txtName, txtCode, txtPrice, txtQuantity, txtFeature1, txtFeature2, txtCategoryId)">Creaete Product</button>
+<button mat-flat-button class="btn" color="primary" (click)="create(txtName, txtCode, txtPrice, txtQuantity, txtFeature1, txtFeature2, txtCategoryId)">Create Product</button>
 
 <app-file-upload [options]="fileUploadOptions" ></app-file-upload>
+
+</div>
+</div>
