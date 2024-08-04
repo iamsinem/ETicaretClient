@@ -12,6 +12,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ComponentsModule } from "./admin/layout/components/components.module";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MatInputModule } from '@angular/material/input';
     MatMenuModule,
     HttpClientModule,
     MatPaginatorModule,
-    MatDialogModule,MatFormFieldModule,MatInputModule
+    MatDialogModule, MatFormFieldModule, MatInputModule,
+    ComponentsModule
 ],
   providers: [
     {provide:"baseUrl",useValue:"http://localhost:5070/api",multi:true},
