@@ -20,7 +20,7 @@ constructor(private productService:ProductService,
            private alertifyService:AlertifyService,
            private dialogService :DialogService
           ){}
-displayedColumns: string[] = ['categoryId', 'productCode', 'productName','price','manufactureDate','quantity','feature1','feature2','createdDate','updatedDate','photos','delete'];
+displayedColumns: string[] = ['categoryId', 'productCode', 'productName','price','manufactureDate','quantity','feature1','feature2','createdDate','photos','delete'];
 dataSource : MatTableDataSource<List_Product> = null;
 
 @ViewChild(MatPaginator) paginator: MatPaginator;

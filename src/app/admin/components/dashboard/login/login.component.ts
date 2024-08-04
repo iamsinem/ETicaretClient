@@ -28,7 +28,7 @@ export class LoginComponent {
 
   onLogin() {
     if (this.email.invalid || this.password.invalid) {
-      this.errorMessage = 'Lütfen geçerli bir e-mail ve şifre giriniz.';
+      this.errorMessage = 'Please enter a valid email and password.';
       return;
     }
 
@@ -57,9 +57,9 @@ export class LoginComponent {
 
   updateErrorMessage() {
     if (this.email.hasError('required')) {
-      this.errorMessage = 'Lütfen geçerli bir e-mail giriniz.';
+      this.errorMessage = 'Please enter a valid email address.';
     } else if (this.email.hasError('email')) {
-      this.errorMessage = 'Lütfen geçerli bir e-mail giriniz.';
+      this.errorMessage = 'Please enter a valid email address';
     } else {
       this.errorMessage = '';
     }

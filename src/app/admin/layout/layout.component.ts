@@ -12,7 +12,7 @@ export class LayoutComponent implements OnInit {
   showSidebar: boolean = false;
   constructor(private alertify: AlertifyService, private router: Router){}
   ngOnInit(): void {
-    this.alertify.message("merhaba",{
+    this.alertify.message("Hello",{
       messageType: MessageType.Success,
       delay: 5,
       position: Position.TopRight
