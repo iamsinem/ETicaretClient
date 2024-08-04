@@ -1,0 +1,43 @@
+/* Footer stil ayarları */
+.footer {
+    background: #f0f0f0; /* Arka plan rengini ayarlayın */
+    padding: 20px;
+    border-top: 2px solid #000; /* Kenarlık stilini ayarlayın */
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* İçerikleri dikey hizalar */
+    justify-content: center; /* İçerikleri dikey olarak ortalar */
+    align-items: center; /* İçerikleri yatay olarak ortalar */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* İçeriği ortalar */
+    text-align: center; /* Metinleri ortalar */
+}
+
+/* Footer içindeki paragraflar */
+.footer p {
+    margin: 5px 0;
+}
+
+/* Footer'ın en altındaki metin */
+.footer-rights {
+    margin-top: 20px; /* Sosyal ikonlar ve metin arasındaki boşluk */
+    font-weight: bold; /* Eğer isterseniz kalın yapabilirsiniz */
+}
+
+/* Sosyal medya ikonları */
+.social-icons {
+    display: flex;
+    gap: 10px; /* İkonlar arasındaki boşluk */
+    margin-top: 10px; /* Sosyal ikonlar ve diğer metin arasındaki boşluk */
+}
+
+.social-icon img {
+    width: 24px; /* İkonların genişliği */
+    height: 24px; /* İkonların yüksekliği */
+    display: block;
+}
