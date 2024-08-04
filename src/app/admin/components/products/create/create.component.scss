@@ -17,3 +17,19 @@
     /* Veya */
     visibility: hidden; /* Bu, elemanı görünmez yapar ancak yer kaplamaya devam eder */
   }
+  .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 300px; /* Genişliği 300px olarak ayarlıyoruz */
+  padding: 16px;
+  background: #eee;
+  border: 1px solid #555;
+  box-sizing: border-box; /* İçerik + padding + border toplam genişliği belirler */
+}
