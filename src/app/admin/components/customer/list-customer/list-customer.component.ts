@@ -9,6 +9,7 @@ import { SelectProductImageDialogComponent } from '../../../../dialogs/select-pr
 import { List_Customer } from '../../../../contracts/list_customer';
 import { CustomerService } from '../../../../services/common/models/customer.service';
 import { MatSort } from '@angular/material/sort';
+
 @Component({
   selector: 'app-list-customer',
   templateUrl: './list-customer.component.html',
