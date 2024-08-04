@@ -25,4 +25,10 @@
    flex: 1;
    padding: 20px;
  }
+ .some-class {
+  -webkit-appearance: none; // Safari ve Chrome için
+  -moz-appearance: none;    // Firefox için
+  appearance: none;         // Standart özellik
+}
+
  
