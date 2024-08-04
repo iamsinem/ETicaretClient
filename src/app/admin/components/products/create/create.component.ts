@@ -55,7 +55,7 @@ export class CreateComponent implements OnInit{
   @Output() fileUploadOptions:Partial<FileUploadOptions>={
     action:"upload",
     controller:"products",
-    explanation:"Resimleri seçiniz...",
+    explanation:"Select images...",
     isAdminPage: true,
     accept:".png, .jpg, .jpeg"
   };
@@ -71,7 +71,7 @@ export class CreateComponent implements OnInit{
     create_product.categoryId = parseInt(CategoryId.value)
 
     if(!Name.value){
-      this.alertify.message("Lütfen Ürün Adını Girin !!",
+      this.alertify.message("Please Enter Product Name!!",
         {
           dismissOthers: true,
         messageType: MessageType.Error,
@@ -81,7 +81,7 @@ export class CreateComponent implements OnInit{
     }
     
     if(parseInt(Quantity.value)<0){
-      this.alertify.message("Lütfen Geçerli Stok Bilgisi Girin !!",
+      this.alertify.message("Please Enter Valid Stock Information!!",
         {
           dismissOthers: true,
         messageType: MessageType.Error,
@@ -92,7 +92,7 @@ export class CreateComponent implements OnInit{
     }
     this.ProductService.create(create_product, () => {
      // this.hideSpinner(SpinnerType.SquareJellyBox);
-      this.alertify.message("Ürün başari ile eklenmistir", {
+      this.alertify.message("The product has been added successfully.", {
         dismissOthers: true,
         messageType: MessageType.Success,
         position: Position.TopRight

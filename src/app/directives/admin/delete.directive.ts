@@ -48,14 +48,14 @@ export class DeleteDirective {
         },this.id).subscribe(data=>{
           $(td.parentElement).fadeOut(700, ()=>{
             this.callback.emit();
-            this.alertifyService.message("Ürün Başarıyla Silinmiştir!",{
+            this.alertifyService.message("Product Successfully Deleted!",{
               dismissOthers:true,
               messageType:MessageType.Success,
               position:Position.TopRight
            })
         });
         },(errorResponse:HttpErrorResponse)=>{
-          this.alertifyService.message("Ürün Silinirken Hata İle Karşılaşılmıştır!",{
+          this.alertifyService.message("An error was encountered while deleting the product!",{
             dismissOthers:true,
             messageType:MessageType.Error,
             position:Position.TopRight

@@ -21,7 +21,7 @@ export class ListCustomerComponent {
     private dialogService :DialogService
    ){}
 
-displayedColumns: string[] = ['Id', 'FirstName', 'LastName', 'Phone','Email','Address','Tc','BirthDate','Gender','CreatedDate','UpdatedDate'];
+displayedColumns: string[] = [ 'FirstName', 'LastName', 'Phone','Email','Address','Tc','BirthDate','Gender','CreatedDate'];
 dataSource : MatTableDataSource<List_Customer> = null;
 
 

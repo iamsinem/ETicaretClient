@@ -33,16 +33,16 @@
 <mat-form-field class="product-create">
     <mat-label>Category</mat-label>
     <mat-select [(ngModel)]="selectedCategory" (ngModelChange)="updateCategoryId()">
-        <mat-option value="one">Telefon</mat-option>
-        <mat-option value="two">Bilgisayar</mat-option>
-        <mat-option value="three">Tablet</mat-option>
-        <mat-option value="four">Televizyon</mat-option>
+        <mat-option value="one">Phone</mat-option>
+        <mat-option value="two">Computer</mat-option>
+        <mat-option value="three">Table</mat-option>
+        <mat-option value="four">Television</mat-option>
         <mat-option value="five">Modem</mat-option>
     </mat-select>
     <input class="hidden-input" matInput type="number" min="1" [value]="categoryId" #txtCategoryId>
 </mat-form-field>
   
-<button mat-flat-button class="btn" color="primary" (click)="create(txtName, txtCode, txtPrice, txtQuantity, txtFeature1, txtFeature2, txtCategoryId)">Creaete Product</button>
+<button mat-flat-button class="btn" color="primary" (click)="create(txtName, txtCode, txtPrice, txtQuantity, txtFeature1, txtFeature2, txtCategoryId)">Create Product</button>
 
 <app-file-upload [options]="fileUploadOptions" ></app-file-upload>
 
