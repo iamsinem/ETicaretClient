@@ -7,20 +7,25 @@ import { AlertifyService, MessageType, Position } from '../../../../services/adm
 import { get } from 'jquery';
 import { DialogService } from '../../../../services/common/dialog.service';
 import { SelectProductImageDialogComponent } from '../../../../dialogs/select-product-image-dialog/select-product-image-dialog.component';
+import { DatePipe, DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-lists',
   templateUrl: './lists.component.html',
   styleUrl: './lists.component.scss',
+  providers: [DecimalPipe,DatePipe] 
    
 })
 export class ListsComponent implements OnInit{
 
 constructor(private productService:ProductService,
            private alertifyService:AlertifyService,
-           private dialogService :DialogService
+           private dialogService :DialogService,
+           private decimalPipe: DecimalPipe,
+           private datePipe: DatePipe 
+           
           ){}
-displayedColumns: string[] = ['categoryId', 'productCode', 'productName','price','manufactureDate','quantity','feature1','feature2','createdDate','photos','delete'];
+displayedColumns: string[] = ['categoryId', 'productCode', 'productName','price' ,'createdDate','quantity','feature1','feature2','manufactureDate','photos','delete'];
 dataSource : MatTableDataSource<List_Product> = null;
 
 @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,6 +35,15 @@ async getProducts(){
     this.paginator.length=allProducts.totalCount;
     //this.dataSource.paginator = this.paginator;
 }
+
+formatPrice(price: number): string {
+  return `${this.decimalPipe.transform(price, '1.2-200000')} TL`; // Format price with 'TL' symbol
+}
+
+formatDate(date: string): string {
+  return this.datePipe.transform(date, 'yyyy-MM-dd'); // Format date to 'yyyy-MM-dd'
+}
+
 addProductImages(id: number){
    this.dialogService.openDialog({
     componentType:SelectProductImageDialogComponent,

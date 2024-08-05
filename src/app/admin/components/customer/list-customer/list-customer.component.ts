@@ -9,16 +9,19 @@ import { SelectProductImageDialogComponent } from '../../../../dialogs/select-pr
 import { List_Customer } from '../../../../contracts/list_customer';
 import { CustomerService } from '../../../../services/common/models/customer.service';
 import { MatSort } from '@angular/material/sort';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-list-customer',
   templateUrl: './list-customer.component.html',
-  styleUrl: './list-customer.component.scss'
+  styleUrl: './list-customer.component.scss',
+  providers: [DatePipe]
 })
 export class ListCustomerComponent {
   constructor(private customerService:CustomerService,
     private alertifyService:AlertifyService,
-    private dialogService :DialogService
+    private dialogService :DialogService,
+    private datePipe: DatePipe
    ){}
 
 displayedColumns: string[] = [ 'FirstName', 'LastName', 'Phone','Email','Address','Tc','BirthDate','Gender','CreatedDate'];
@@ -33,6 +36,10 @@ async getCustomer(){
 //this.dataSource.paginator = this.paginator;
 }
 
+
+formatDate(date: string): string {
+  return this.datePipe.transform(date, 'yyyy-MM-dd'); // Format date to 'yyyy-MM-dd'
+}
 async pageChanged(){
 await this.getCustomer();
 }

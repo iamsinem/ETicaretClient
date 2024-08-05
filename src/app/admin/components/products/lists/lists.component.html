@@ -23,8 +23,8 @@
         <th style="background-color:aliceblue; border-radius: 10px;" mat-header-cell *matHeaderCellDef>Category</th>
         <td mat-cell *matCellDef="let element">
           <span *ngIf="element.categoryId === 1"><img style="cursor:pointer" src="../../../../../assets/telefon.png" width="30" height="30"></span>
-          <span *ngIf="element.categoryId === 2"><img style="cursor:pointer" src="../../../../../assets/tablet.png" width="30" height="30"></span>
-          <span *ngIf="element.categoryId === 3"><img style="cursor:pointer" src="../../../../../assets/laptop.png" width="30" height="30"></span>
+          <span *ngIf="element.categoryId === 2"><img style="cursor:pointer" src="../../../../../assets/laptop.png" width="30" height="30"></span>
+          <span *ngIf="element.categoryId === 3"><img style="cursor:pointer" src="../../../../../assets/tablet.png" width="30" height="30"></span>
           <span *ngIf="element.categoryId === 4"><img style="cursor:pointer" src="../../../../../assets/television.png" width="30" height="30"></span>
           <span *ngIf="element.categoryId === 5"><img style="cursor:pointer" src="../../../../../assets/modem.png" width="30" height="30"></span>
         </td>
@@ -44,14 +44,16 @@
       </ng-container>
 
       <ng-container matColumnDef="price">
-        <th style="background-color:aliceblue; border-radius: 10px;" mat-header-cell *matHeaderCellDef>  Price</th>
-        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        <th style="background-color:aliceblue; border-radius: 10px; " mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let element"> {{ formatPrice(element.price) }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdDate">
+        <th style="background-color:aliceblue; border-radius: 10px;" mat-header-cell *matHeaderCellDef>Created Date</th>
+        <td mat-cell *matCellDef="let element"> {{ formatDate(element.createdDate) }} </td>
       </ng-container>
   
-      <ng-container matColumnDef="manufactureDate">
-        <th style="background-color:aliceblue; border-radius: 10px;" mat-header-cell *matHeaderCellDef>Manufacture Datw</th>
-        <td mat-cell *matCellDef="let element"> {{element.manufactureDate}} </td>
-      </ng-container>
+
   
       <ng-container matColumnDef="quantity">
         <th style="background-color:aliceblue; border-radius: 10px;" mat-header-cell *matHeaderCellDef>Quantity</th>
@@ -68,9 +70,9 @@
         <td mat-cell *matCellDef="let element"> {{element.feature2}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="createdDate">
-        <th style="background-color:aliceblue; border-radius: 10px;" mat-header-cell *matHeaderCellDef>Created Date</th>
-        <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
+      <ng-container matColumnDef="manufactureDate">
+        <th style="background-color:aliceblue; border-radius: 10px;" mat-header-cell *matHeaderCellDef>Manufacture Date</th>
+        <td mat-cell *matCellDef="let element"> {{ formatDate(element.manufactureDate) }} </td>
       </ng-container>
       <!--
       <ng-container matColumnDef="updatedDate">
